@@ -1,3 +1,11 @@
+def reverse_ll(head):
+    if not head or not head.next:
+        return head
+    p=reverse_ll(head.next)
+    head.next.next=head
+    head.next=None
+    # print(p.val)
+    return p
 def isPalindrome(self, head):
     # head_r=reverse_ll(head)
     # head1=head
