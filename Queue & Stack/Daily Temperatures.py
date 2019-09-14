@@ -22,3 +22,43 @@ class Solution(object):#TLE
         :type T: List[int]
         :rtype: List[int]
         """
+
+class Solution1(object):#Accepted
+    def dailyTemperatures(self, T):
+        temp = [30001] * 101
+        ans = [0] * len(T)
+        for i in range(len(T) - 1, -1, -1):
+            min1 = 30001
+            for j in range(T[i] + 1, 101):
+                min1 = min(min1, temp[j])
+            if min1 == 30001:
+                ans[i] = 0
+            else:
+                ans[i] = min1 - i
+            temp[T[i]] = i
+        return ans
+
+        """
+        :type T: List[int]
+        :rtype: List[int]
+        """
+
+
+class Solution2(object):
+    def dailyTemperatures(self, T):
+        ans = [0] * len(T)
+        stack = []
+        for i in range(len(T) - 1, -1, -1):
+            while stack and stack[-1][0] <= T[i]:
+                stack.pop()
+            if stack:
+                # print stack
+                ans[i] = stack[-1][1] - i
+
+            stack.append((T[i], i))
+        return ans
+
+        """
+        :type T: List[int]
+        :rtype: List[int]
+        """
