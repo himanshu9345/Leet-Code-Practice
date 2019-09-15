@@ -15,17 +15,14 @@ class Solution(object):
         curr = root
         while curr:
             while (curr.left):
-                print
-                curr.left.val, "l"
+                print (curr.left.val, "l")
                 stack.append(curr.left)
                 curr = curr.left
 
             if curr.right:
-                print
-                curr.right.val, "r"
+                print(curr.right.val, "r")
                 stack.append(curr.right)
-            print
-            curr.val
+            print(curr.val)
             ans.append(curr.val)
             if stack:
                 curr = stack.pop()
