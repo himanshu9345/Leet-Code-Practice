@@ -12,7 +12,7 @@ class Solution(object):
 
         return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
         """
-        :type root: TreeNode
+        :type root: TreeNode 
         :rtype: List[int]
         """
 
