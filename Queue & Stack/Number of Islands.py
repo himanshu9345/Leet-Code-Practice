@@ -16,6 +16,16 @@ def bfs(grid, m, n, q, seen, i, j):
                     seen.add((mx, ny))
 
 
+def dfs(grid, x, y, seen, count, m, n):
+    r, c = [1, -1, 0, 0], [0, 0, 1, -1]
+    for i in range(4):
+        mx, ny = x + r[i], y + c[i]
+        if mx >= 0 and mx < m and ny >= 0 and ny < n and (mx, ny) not in seen and grid[mx][ny] == "1":
+            seen.add((mx, ny))
+            count += dfs(grid, mx, ny, seen, count, m, n)
+    return count + 1
+
+
 class Solution(object):
     def numIslands(self, grid):
         if grid == []:
@@ -23,15 +33,15 @@ class Solution(object):
         seen = set()
         q = deque()
         m, n = len(grid), len(grid[0])
-        count = 0
+        count1 = 0
         for i in range(m):
             for j in range(n):
-                # print grid[i][j],seen
                 if (i, j) not in seen and grid[i][j] == "1":
                     seen.add((i, j))
-                    bfs(grid, m, n, q, seen, i, j)
-                    count += 1
-        return count
+                    dfs(grid, i, j, seen, 0, m, n)
+                    # bfs(grid,m,n,q,seen,i,j)
+                    count1 += 1
+        return count1
 
         """
         :type grid: List[List[str]]
