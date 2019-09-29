@@ -9,7 +9,6 @@ class Solution(object):
     def inorderTraversal(self, root):
         if not root:
             return []
-
         stack = []
         ans = []
         curr = root
