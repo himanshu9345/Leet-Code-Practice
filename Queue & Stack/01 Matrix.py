@@ -31,9 +31,7 @@ def updateMatrix( matrix):
         list1=[]
         for j in range(len(matrix[0])):
             if matrix[i][j]==1:
-                # print(i,j)
-                # new_mat[i][j]=
-                # print(new_mat)
+
                 list1.append(bfs(matrix,len(matrix),len(matrix[0]),i,j))
             else:
                 list1.append(matrix[i][j])
