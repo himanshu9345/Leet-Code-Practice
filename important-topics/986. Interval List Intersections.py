@@ -2,6 +2,7 @@ A = [[0,1],[5,10],[12,23],[27,29]]
 B = [[1,5],[8,12],[15,24],[25,26]]
 def intervalIntersection( A, B):#memory limit exceeded
     seen=set()
+    # seen.
     dict1={}
     for v,i in enumerate(A):
         for j in [i for i in range(i[0],i[1]+1)]:
