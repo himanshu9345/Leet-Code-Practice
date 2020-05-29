@@ -50,7 +50,7 @@ def possibleBipartition1( N, dislikes):
     for i,j in dislikes:
         dict1[i].append(j)
         dict1[j].append(i)
-    
+    print(dict1)
     arr = [i for i in range(N+1)]
     for i in range(1, N+1):
         i_parrent = find_parent(arr, i)
