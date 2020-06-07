@@ -65,3 +65,33 @@ class Solution(object): # 5%
         if len(dist) == N:
             return max(dist.values())
         return -1
+
+class Solution(object):# dijkastra 74%
+    def networkDelayTime(self, times, N, K):
+        dict1 = defaultdict(list)
+        for i, j, k in times:
+            dict1[i-1].append((j-1,k))
+        
+        dist = [float('inf')] * N
+        visited = [False] * N
+        dist[K-1] = 0
+        while True:
+            curr_node = -1
+            curr_dist = float('inf')
+            for i in range(N):
+                if not visited[i] and dist[i] < curr_dist:
+                    curr_node = i
+                    curr_dist = dist[i]
+            # print curr_node, dist, curr_dist
+            if curr_node == -1: break
+            
+            for j, w in dict1[curr_node]:
+                dist[j] = min(dist[j], curr_dist + w)
+            visited[curr_node] = True
+        # print dist
+        if all(visited):
+            return max(dist)
+        return -1
+        # if len(dist) == N:
+            # return max(dist.values())
+        # return -.1
