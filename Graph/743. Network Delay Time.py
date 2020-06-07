@@ -95,3 +95,23 @@ class Solution(object):# dijkastra 74%
         # if len(dist) == N:
             # return max(dist.values())
         # return -.1
+
+class Solution(object):#44%
+    def networkDelayTime(self, times, N, K):
+        dict1 = defaultdict(list)
+        for i, j, k in times:
+            dict1[i-1].append((j-1,k))
+        
+        dist = [-1] * N
+        
+        heap = [(0, K-1)]
+        while heap:
+            w, i = heapq.heappop(heap)
+            if dist[i] == -1:
+                dist[i] = w
+                for j, jw in dict1[i]:
+                    heapq.heappush(heap, (jw + dist[i], j))
+        if -1 in dist:
+            return  -1
+        return max(dist)
+                
