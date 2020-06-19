@@ -20,7 +20,8 @@ def matchingString(s, p):
         hashValue += (ord(s[i]) - 96)*(Prime**(patternLength-1))
         print(hashValue, patternHash, s[i])
         if hashValue == patternHash and p == s[j:i+1]:
-            ans.append(s[j:i+1])
+            print("Pattern at",j)
+            # ans.append(s[j:i+1])
         hashValue -=  ord(s[j]) - 96
         hashValue /= 3
         j+=1
